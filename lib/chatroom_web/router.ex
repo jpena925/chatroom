@@ -17,6 +17,12 @@ defmodule ChatroomWeb.Router do
   scope "/", ChatroomWeb do
     pipe_through :browser
 
+    live "/rooms", RoomsLive.Index, :index
+    live "/rooms/new", RoomsLive.Index, :new
+    live "/rooms/:id", RoomsLive.Show, :show
+    live "/rooms/:id/edit", RoomsLive.Show, :edit
+    live "/rooms/:id/show/edit", RoomsLive.Show, :edit
+
     get "/", PageController, :home
   end
 
