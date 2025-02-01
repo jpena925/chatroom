@@ -197,4 +197,11 @@ defmodule Chatroom.Chat do
   def change_message(%Message{} = message, attrs \\ %{}) do
     Message.changeset(message, attrs)
   end
+
+  def list_messages_for_room(room_id) do
+    Message
+    |> where(room_id: ^room_id)
+    |> order_by(asc: :inserted_at)
+    |> Repo.all()
+  end
 end

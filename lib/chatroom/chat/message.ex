@@ -5,7 +5,7 @@ defmodule Chatroom.Chat.Message do
   schema "messages" do
     field :content, :string
     field :user_name, :string
-    field :room_id, :id
+    belongs_to :room, Chatroom.Chat.Room
 
     timestamps(type: :utc_datetime)
   end
