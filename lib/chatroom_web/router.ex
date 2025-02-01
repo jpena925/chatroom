@@ -17,11 +17,17 @@ defmodule ChatroomWeb.Router do
   scope "/", ChatroomWeb do
     pipe_through :browser
 
-    live "/rooms", RoomsLive.Index, :index
-    live "/rooms/new", RoomsLive.Index, :new
-    live "/rooms/:id", RoomsLive.Show, :show
-    live "/rooms/:id/edit", RoomsLive.Show, :edit
-    live "/rooms/:id/show/edit", RoomsLive.Show, :edit
+    live "/rooms", RoomLive.Index, :index
+    live "/rooms/new", RoomLive.Index, :new
+    live "/rooms/:id", RoomLive.Show, :show
+    live "/rooms/:id/edit", RoomLive.Show, :edit
+    live "/rooms/:id/show/edit", RoomLive.Show, :edit
+
+    live "/messages", MessageLive.Index, :index
+    live "/messages/new", MessageLive.Index, :new
+    live "/messages/:id/edit", MessageLive.Index, :edit
+    live "/messages/:id", MessageLive.Show, :show
+    live "/messages/:id/show/edit", MessageLive.Show, :edit
 
     get "/", PageController, :home
   end
